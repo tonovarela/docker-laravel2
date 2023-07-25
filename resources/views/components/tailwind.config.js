@@ -7,6 +7,7 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        "./resources/**/*.js",
         "./node_modules/tw-elements/dist/js/**/*.js"
     ],
 
@@ -18,5 +19,5 @@ export default {
         },
     },
 
-    plugins: [forms, require("tw-elements/dist/plugin")],
+    plugins: [forms, require("tw-elements/dist/plugin.cjs")],
 };

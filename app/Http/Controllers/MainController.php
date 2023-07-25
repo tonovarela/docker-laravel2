@@ -10,5 +10,11 @@ class MainController extends Controller
         $products = Product::all();
         return view('main', compact('products', 'cartItems'));
     }
+
+    public function productDetail($id)
+    {
+        $product = Product::find($id);
+        return view('details', compact('product'));
+    }
 }
 

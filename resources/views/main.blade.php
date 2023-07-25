@@ -5,7 +5,7 @@
         <div class="grid grid-cols-3 gap-6 mt-6 ">
             @foreach ($products as $product)
             <div class="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-md shadow-md">
-                <img src="{{ $product->image1 }}" alt="" class="mx-auto max-h-60">
+                <a href="products/{{$product->id}}"><img src="{{ $product->image1 }}" alt="" class="mx-auto max-h-60"></a>
                 <div class="flex items-end justify-end w-full bg-cover">
                     
                 </div>
