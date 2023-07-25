@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "swiper": "^10.0.4",
         "tw-elements": "^1.0.0-beta2"
     }
 }

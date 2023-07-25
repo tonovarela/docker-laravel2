@@ -6,5 +6,12 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-import { Datepicker, Input, initTE, Carousel } from "tw-elements";
-initTE({ Datepicker, Input, Carousel});
+
+// import Swiper bundle with all modules installed
+import Swiper from 'swiper/bundle';
+
+// import styles bundle
+import 'swiper/css/bundle';
+
+// init Swiper:
+const swiper = new Swiper();
