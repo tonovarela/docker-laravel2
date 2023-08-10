@@ -7,8 +7,21 @@ use Illuminate\Http\Request;
 
 class KioskActivityController extends Controller
 {
-    public function processRequest($request)
+
+    public function processRequest(Request $request)
     {
-        return 'hello';
+        //authenticate
+        
+
+            $req = json_encode($request->all());
+            $this->postToQueue($req);  
+            //setup response
+            $response = $this->setupResponse($request);
+            
+  
+            return response()->json($response);
+                    
+        
+    
     }
 }

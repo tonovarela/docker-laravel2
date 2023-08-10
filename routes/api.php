@@ -18,14 +18,8 @@ use App\Http\Controllers\Api\KioskActivityController;
 
 Route::group(['middleware' => ['apiLog']], function () 
     {
-        //kioskactivity
-        Route::post(
-            'kioskActivity',
-            [
-                'uses' => 'Api\KioskActivityController@processRequest',
-                'as' => 'api.KioskActivity',
-            ]
-        );
+        Route::post('/kioskActivity', [KioskActivityController::class, 'processRequest'])->name('csform.invoicereport');
+
  
     }
 );
