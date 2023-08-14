@@ -18,9 +18,9 @@ return new class extends Migration
             $table->integer('item_amount');
             $table->decimal('tax_amount',  10, 2);
             $table->decimal('total_amount',  10, 2);
-            $table->integer('order_status_id');
+            $table->string('order_status');
             $table->timestamps();
-            $table->foreign('order_status_id')->references('id')->on('order_statuses');
+            //$table->foreign('order_status_id')->references('id')->on('order_statuses');
         });
     }
     /**
