@@ -51,7 +51,32 @@ class get_planogram extends Command
 
         //$response = Http::post('https://devapi.adminspend.com/api/v1/planogram', $req);
         $response = Http::post('http://localhost:8000/api/v1/planogram', $req);
+        $json = $response->json();
 
+        foreach ($json['response']['planogram']  as $det)
+        {
+            
+            if (isset($det['coil']))
+            {
+
+                $stock = substr($det['coil'], 0,1);
+                $shelf = substr($det['coil'], 1,1);
+                $lane = substr($det['coil'], 2,1);
+                $plano  = new Planogram;
+                $plano->item_id = $det['product']['id'];
+                $plano->productCode = $det['product']['item_code'];
+                $plano->stock = $stock;
+                $plano->row = $shelf;
+                $plano->lane = $lane;
+                $plano->motorType = 1;
+                $plano->productPrice = $det['price'];
+                $plano->stepNum = 1;
+                $plano->maxStock = $det['capacity'];
+                $plano->save();
+            }
+
+        }
+ 
     }
 
 
