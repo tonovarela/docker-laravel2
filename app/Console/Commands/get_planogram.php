@@ -65,6 +65,7 @@ class get_planogram extends Command
                 $plano  = new Planogram;
                 $plano->item_id = $det['product']['id'];
                 $plano->productCode = $det['product']['item_code'];
+                $plano->motor = $det['coil'];
                 $plano->stock = $stock;
                 $plano->row = $shelf;
                 $plano->lane = $lane;
