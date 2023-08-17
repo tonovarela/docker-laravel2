@@ -57,7 +57,7 @@ class get_product extends Command
             );
 
 
-            $response = Http::post('https://devapi.adminspend.com/api/v1/planogram', $req);
+            $response = Http::post('https://devapi.adminspend.com/api/v1/product', $req);
             #$response = Http::post('http://localhost:8000/api/v1/product', $req);
             $json = $response->json();
             $product = $json['response']['product'];
