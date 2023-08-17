@@ -60,8 +60,22 @@ class get_product extends Command
             //$response = Http::post('https://devapi.adminspend.com/api/v1/planogram', $req);
             $response = Http::post('http://localhost:8000/api/v1/product', $req);
             $json = $response->json();
+            $product = $json['response']['product'];
+
             $prod = new Product;
-            $prod = 
+            $prod->item_id = $product['id'];
+            $prod->productCode = $product['item_code'];
+            $prod->upc =  $product['upc'];
+            $prod->name =  $product['item'];
+            $prod->image1 =  $product['detail']['img1'] ?? '';
+            $prod->image2 =  $product['detail']['img2'] ?? ''; 
+            $prod->image3 =  $product['detail']['img3'] ?? '';
+            $prod->image4 =  $product['detail']['img4'] ?? '';
+            $prod->summary =  $product['detail']['detail'] ?? '';
+            $prod->description =  $product['detail']['description'] ?? '';
+            $prod->productPrice =  $plano['price'] ?? 0;
+            $prod->save();
+
         }
     }
     public function get_config()
