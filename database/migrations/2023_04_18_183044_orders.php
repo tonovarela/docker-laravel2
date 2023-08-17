@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->primary();
             $table->integer('item_amount');
             $table->decimal('tax_amount',  10, 2);
             $table->decimal('total_amount',  10, 2);
@@ -22,6 +22,9 @@ return new class extends Migration
             $table->timestamps();
             //$table->foreign('order_status_id')->references('id')->on('order_statuses');
         });
+        // lame way to start cart/order numbers at 500
+        DB::statement("insert into orders (id, tax_amount,total_amount,item_amount,order_status) values (499,0,0,0,'init');");
+
     }
     /**
      * Reverse the migrations.

@@ -62,4 +62,11 @@ class CartController extends Controller
         session()->flash('success', 'All Item Cart Clear Successfully !');
         return redirect()->route('main.list');
     }
+
+    public function checkout()
+    {
+        $cartItems = \Cart::getContent();
+
+        return redirect()->route('main.list');
+    }
 }
