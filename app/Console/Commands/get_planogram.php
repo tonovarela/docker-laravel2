@@ -49,8 +49,8 @@ class get_planogram extends Command
         );
 
 
-        //$response = Http::post('https://devapi.adminspend.com/api/v1/planogram', $req);
-        $response = Http::post('http://localhost:8000/api/v1/planogram', $req);
+        $response = Http::post('https://devapi.adminspend.com/api/v1/planogram', $req);
+        //$response = Http::post('http://localhost:8000/api/v1/planogram', $req);
         $json = $response->json();
 
         foreach ($json['response']['planogram']  as $det)
