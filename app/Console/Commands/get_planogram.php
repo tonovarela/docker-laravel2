@@ -33,7 +33,7 @@ class get_planogram extends Command
         // $config = $this->get_config(); //Machine_configuration::all();
         $uniqueRequestId = strtoupper(base_convert(Str::uuid(), 36, 30));
         $machine_id = env('MACHINE_ID');
-        $user = $env('MACHINE_USER');
+        $user = env('MACHINE_USER');
         $pass =  env('MACHINE_PASS');
 
         $req = array(
