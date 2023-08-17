@@ -17,18 +17,18 @@ return new class extends Migration
             $table->integer('order_id');
             $table->string('item_id');
             $table->string('product_name');
-            $table->string('upc');
+            $table->string('upc')->nullable();
             $table->integer('quantity');
             $table->decimal('soldPrice', 10, 2);
             $table->decimal('tax_amount', 10, 2);
-            $table->string('product');
-            $table->string('prodType');
-            $table->decimal('discount', 10, 2);
-            $table->string('referTo');
-            $table->string('picture');
+            $table->string('product')->nullable();;
+            $table->string('prodType')->nullable();;
+            $table->decimal('discount', 10, 2)->nullable();;
+            $table->string('referTo')->nullable();;
+            $table->string('picture')->nullable();;
             $table->decimal('total_amount', 10, 2);
             $table->timestamps();
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
     /**

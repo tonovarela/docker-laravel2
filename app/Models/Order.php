@@ -14,7 +14,7 @@ class Order extends Model
         'total_amount'
     ];
 
-    public function concept_name()
+    public function details()
     {
         return $this->hasMany('App\Models\Order_detail', 'id', 'order_id');
     }
