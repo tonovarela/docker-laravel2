@@ -14,7 +14,7 @@ class CartController extends Controller
             'name' => 'TAX',
             'type' => 'tax',
             'target' => 'subtotal', // this condition will be applied to cart's subtotal when getSubTotal() is called.
-            'value' => '8.375%',
+            'value' => env('MACHINE_TAX'),
             'attributes' => array( // attributes field is optional
                 'description' => 'Sales tax',
 

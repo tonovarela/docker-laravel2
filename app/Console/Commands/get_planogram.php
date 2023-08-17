@@ -30,11 +30,11 @@ class get_planogram extends Command
      */
     public function handle()
     {
-        $config = $this->get_config(); //Machine_configuration::all();
+        // $config = $this->get_config(); //Machine_configuration::all();
         $uniqueRequestId = strtoupper(base_convert(Str::uuid(), 36, 30));
-        $machine_id = $config['machine_id'];
-        $user = $config['user'];
-        $pass = $config['pass'];
+        $machine_id = env('MACHINE_ID');
+        $user = $env('MACHINE_USER');
+        $pass =  env('MACHINE_PASS');
 
         $req = array(
             "request" => [

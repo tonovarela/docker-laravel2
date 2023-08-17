@@ -33,9 +33,9 @@ class get_product extends Command
     {
         $config = $this->get_config(); //Machine_configuration::all();
         $uniqueRequestId = strtoupper(base_convert(Str::uuid(), 36, 30));
-        $machine_id = $config['machine_id'];
-        $user = $config['user'];
-        $pass = $config['pass'];
+        $machine_id = env('MACHINE_ID');
+        $user = $env('MACHINE_USER');
+        $pass =  env('MACHINE_PASS');
         #$item_id = 496;
 
         $planos = Planogram::all();
@@ -73,7 +73,7 @@ class get_product extends Command
             $prod->image4 =  $product['detail']['img4'] ?? '';
             $prod->summary =  $product['detail']['detail'] ?? '';
             $prod->description =  $product['detail']['description'] ?? '';
-            $prod->productPrice =  $plano['price'] ?? 0;
+            $prod->productPrice =  $plano['productPrice'] ?? 0;
             $prod->save();
 
         }
