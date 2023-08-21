@@ -27,6 +27,7 @@ Route::group(['middleware' => ['apiLog']], function ()
         Route::post('/outOfOrderRequest', [OutOfOrderController::class, 'processRequest'])->name('outoforder');
         Route::post('/reinstateRequest', [ReinstateController::class, 'processRequest'])->name('reinstate');
         Route::post('/planogramUpdate', [PlanogramUpdateController::class, 'processRequest'])->name('planogramupdate');
+        Route::post('/eventsUpdate', [EventsUpdateController::class, 'processRequest'])->name('planogramupdate');
         
  
     }
