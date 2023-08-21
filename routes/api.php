@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\KioskActivityController;
+use App\Http\Controllers\Api\InventoryUpdateController;
+use App\Http\Controllers\Api\OutOfOrderController;
+use App\Http\Controllers\Api\ReinstateController;
+use App\Http\Controllers\Api\PlanogramUpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +22,12 @@ use App\Http\Controllers\Api\KioskActivityController;
 
 Route::group(['middleware' => ['apiLog']], function () 
     {
-        Route::post('/kioskActivity', [KioskActivityController::class, 'processRequest'])->name('csform.invoicereport');
-
+        Route::post('/kioskActivity', [KioskActivityController::class, 'processRequest'])->name('kioskactivity');
+        Route::post('/inventoryUpdate', [InventoryUpdateController::class, 'processRequest'])->name('inventoryupdate');
+        Route::post('/outOfOrderRequest', [OutOfOrderController::class, 'processRequest'])->name('outoforder');
+        Route::post('/reinstateRequest', [ReinstateController::class, 'processRequest'])->name('reinstate');
+        Route::post('/planogramUpdate', [PlanogramUpdateController::class, 'processRequest'])->name('planogramupdate');
+        
  
     }
 );
