@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('machine_configuration', function (Blueprint $table) {
+        Schema::create('machine_configurations', function (Blueprint $table) {
             $table->id();
             $table->string('cfg_item');
             $table->string('cfg_item_value');

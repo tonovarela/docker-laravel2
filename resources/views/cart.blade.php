@@ -68,6 +68,12 @@
                         <div class="flex justify-between items-center my-5">
                             <div class="font-semibold text-2xl">Total: ${{ Cart::getTotal() }}</div>
                             <div>
+                                <form action="{{ route('cart.checkout') }}" method="POST">
+                                    @csrf
+                                    <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-green-800">Check Out</button>
+                                </form>
+                            </div>
+                            <div>
                                 <form action="{{ route('cart.clear') }}" method="POST">
                                     @csrf
                                     <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-gray-800">Clear Carts</button>

@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('planogram', function (Blueprint $table) {
             $table->id();
+            $table->integer('item_id');
             $table->string('productCode');
+            $table->string('motor');
+            $table->unique('motor');
             $table->string('stock');
             $table->string('row');
             $table->string('lane');

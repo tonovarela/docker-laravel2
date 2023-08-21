@@ -21,8 +21,8 @@ class KioskActivityController extends Controller
 
         //check for order
         $no_order  = '{}'; // blank for no orders
-        $active_order = Order::with('details')->where('status', 'open')->first();
-        if (isset($order))
+        $active_order = Order::with('details')->where('order_status', 'OrderCreated')->first();
+        if (isset($active_order))
         {
             $order_info = $active_order;
         } else {

@@ -20,6 +20,7 @@ Route::post('cart', [App\Http\Controllers\CartController::class, 'addToCart'])->
 Route::post('update-cart', [App\Http\Controllers\CartController::class, 'updateCart'])->name('cart.update');
 Route::post('remove', [App\Http\Controllers\CartController::class, 'removeCart'])->name('cart.remove');
 Route::post('clear', [App\Http\Controllers\CartController::class, 'clearAllCart'])->name('cart.clear');
+Route::post('checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
 
 
 

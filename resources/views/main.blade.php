@@ -94,6 +94,12 @@
                 </div>
                 <div class="font-semibold text-2xl">Tax: ${{ Cart::getSubtotal() }}</div>
                 <div class="font-semibold text-2xl">Total: ${{ Cart::getTotal() }}</div>
+                <div>
+                    <form action="{{ route('cart.checkout') }}" method="POST">
+                        @csrf
+                        <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-green-800">Checkout</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
