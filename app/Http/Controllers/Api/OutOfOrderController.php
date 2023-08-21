@@ -17,7 +17,7 @@ class OutOfOrderController extends Controller
 
         $response = [
             'status' => 'SUCCESS',
-            'order_info' => 'The out of order request object is updated',
+            'message' => 'The out of order request object is updated',
         ];
 
         return response()->json($response);
