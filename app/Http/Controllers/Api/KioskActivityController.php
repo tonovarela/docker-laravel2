@@ -24,7 +24,32 @@ class KioskActivityController extends Controller
         $active_order = Order::with('details')->where('order_status', 'OrderCreated')->first();
         if (isset($active_order))
         {
-            $order_info = $active_order;
+            //format response
+            $order_info = [
+                'order_id' => $active_order->id,
+                'item_amount' => $active_order->item_amount,
+                'tax_amount' => $active_order->tax_amount,
+                'total_amount' => $active_order->total_amount,
+                'items' => array(),
+            ];
+            foreach ($active_order->details as $item)
+            {
+                $order_info['items'][] = [
+                    'item_id' => $item->item_id,
+                    'product_name' => $item->product_name,
+                    'upc' => $item->upc,
+                    'quantity' => 1,
+                    'soldPrice' => $item->soldPrice,
+                    'tax_amount' =>  $item->tax_amount,
+                    'product' => $item->product,
+                    'prodType' => 'prod',
+                    'discount' => 0,
+                    'referTo' => 'marcos@prepango.com',
+                    'picture'=> $item->image1,
+                    'total_amount' => $item->total_amount,
+
+                ];
+            }
         } else {
             $order_info = $no_order;
         }
