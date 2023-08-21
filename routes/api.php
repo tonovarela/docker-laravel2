@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\InventoryUpdateController;
 use App\Http\Controllers\Api\OutOfOrderController;
 use App\Http\Controllers\Api\ReinstateController;
 use App\Http\Controllers\Api\PlanogramUpdateController;
+use App\Http\Controllers\Api\EventsUpdateController;
 
 /*
 |--------------------------------------------------------------------------
