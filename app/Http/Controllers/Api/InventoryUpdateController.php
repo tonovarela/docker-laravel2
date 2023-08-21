@@ -16,19 +16,10 @@ class InventoryUpdateController extends Controller
         $req = $request->json()->all();
 
 
-        //check for order
-        $no_order  = '{}'; // blank for no orders
-        $active_order = Order::with('details')->where('status', 'open')->first();
-        if (isset($order))
-        {
-            $order_info = $active_order;
-        } else {
-            $order_info = $no_order;
-        }
         // $response = '{"status":"Active","order_info":{}}';
         $response = [
-            'status' => 'Active',
-            'order_info' => $order_info,
+            'status' => 'SUCCESS',
+            'message' => 'SUCCESS',
         ];
 
         return response()->json($response);
