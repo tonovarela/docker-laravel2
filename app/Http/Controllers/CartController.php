@@ -77,7 +77,6 @@ class CartController extends Controller
     public function checkout()
     {
         $cartItems = \Cart::getContent();
-        dd($cartItems);
 
         $subTotal = \Cart::getSubTotalWithoutConditions();
         $condition = \Cart::getCondition('TAX');
@@ -93,7 +92,7 @@ class CartController extends Controller
         // add items
         foreach ($cartItems as $item)
         {
-            $product = Product::where('item_id', $item->attributes->item_id);
+            //$product = Product::where('item_id', $item->attributes->item_id);
 
             $det = new Order_detail;
             $det->order_id = $order->id;
