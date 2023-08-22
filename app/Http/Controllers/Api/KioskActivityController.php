@@ -25,6 +25,7 @@ class KioskActivityController extends Controller
         if (isset($active_order))
         {
             //format response
+            $status = 'OrderCreated';
             $order_info = [
                 'order_id' => $active_order->id,
                 'item_amount' => $active_order->item_amount,
@@ -51,11 +52,12 @@ class KioskActivityController extends Controller
                 ];
             }
         } else {
+            $status = 'Active';
             $order_info = $no_order;
         }
         // $response = '{"status":"Active","order_info":{}}';
         $response = [
-            'status' => 'Active',
+            'status' => $status,
             'order_info' => $order_info,
         ];
 
