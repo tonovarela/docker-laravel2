@@ -7,7 +7,7 @@ class MainController extends Controller
     public function productList()
     {
         $cartItems = \Cart::getContent();
-        $products = Product::all();
+        $products = Product::where('available', '>', 0)->get();
         return view('main', compact('products', 'cartItems'));
     }
 
