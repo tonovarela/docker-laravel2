@@ -15,6 +15,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
+
         $condition = new \Darryldecode\Cart\CartCondition(array(
             'name' => 'TAX',
             'type' => 'tax',
@@ -35,6 +36,8 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
                 'image' => $request->image,
+                'item_id' => $request->item_id,
+                'productCode' => $request->productCode,
             ),
         ]);
         
@@ -74,6 +77,7 @@ class CartController extends Controller
     public function checkout()
     {
         $cartItems = \Cart::getContent();
+        dd($cartItems);
 
         $subTotal = \Cart::getSubTotalWithoutConditions();
         $condition = \Cart::getCondition('TAX');
@@ -89,10 +93,13 @@ class CartController extends Controller
         // add items
         foreach ($cartItems as $item)
         {
-            
+            $product = Product::where('item_id', $item->attributes->item_id);
+
             $det = new Order_detail;
             $det->order_id = $order->id;
-            $det->item_id = $item->id;
+            $det->item_id = $item->attributes->item_id;
+            $det->upc = $item->attributes->productCode;
+            $det->picture = $item->attributes->image;
             $det->product_name = $item->name;
             $det->soldPrice = $item->price;
             $det->tax_amount = number_format($item->price * $condition->parsedRawValue,2);

@@ -32,6 +32,8 @@
                             class="flex justify-end">
                             @csrf
                             <input type="hidden" value="{{ $product->id.Cart::getTotalQuantity()}}" name="id">
+                            <input type="hidden" value="{{ $product->item_id}}" name="item_id">
+                            <input type="hidden" value="{{ $product->productCode}}" name="productCode">
                             <input type="hidden" value="{{ $product->name }}" name="name">
                             <input type="hidden" value="{{ $product->productPrice }}" name="price">
                             <input type="hidden" value="{{ $product->image1 }}" name="image">
