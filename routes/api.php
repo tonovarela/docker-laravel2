@@ -29,6 +29,8 @@ Route::group(['middleware' => ['apiLog']], function ()
         Route::post('/reinstateRequest', [ReinstateController::class, 'processRequest'])->name('reinstate');
         Route::post('/planogramUpdate', [PlanogramUpdateController::class, 'processRequest'])->name('planogramupdate');
         Route::post('/eventsUpdate', [EventsUpdateController::class, 'processRequest'])->name('planogramupdate');
+        Route::post('/paymentUpdate', [PaymentUpdateController::class, 'processRequest'])->name('paymentUpdate');
+        Route::post('/dispenseUpdate', [DispenseUpdateController::class, 'processRequest'])->name('dispenseUpdate');
         
  
     }
