@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\OutOfOrderController;
 use App\Http\Controllers\Api\ReinstateController;
 use App\Http\Controllers\Api\PlanogramUpdateController;
 use App\Http\Controllers\Api\EventsUpdateController;
+use App\Http\Controllers\Api\PaymentUpdateController;
+use App\Http\Controllers\Api\DispenseUpdateController;
 
 /*
 |--------------------------------------------------------------------------
