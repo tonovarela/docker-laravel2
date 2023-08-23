@@ -17,7 +17,7 @@ class PlanogramUpdateController extends Controller
         // request
         $req = $request->json()->all();
 
-        $planos = Planogram::all();
+        $planos = Planogram::with('product')->get();
 
         $response = [
             'status' => 'SUCCESS',
@@ -27,6 +27,8 @@ class PlanogramUpdateController extends Controller
         {
             $response['items'][] = [
                 'productCode' => $plano->productCode,
+                'productName' => $plano->product->name,
+                'image' => $plano->product->image1,
                 'stock' => $plano->stock,
                 'row' => $plano->row,
                 'lane' => $plano->lane,

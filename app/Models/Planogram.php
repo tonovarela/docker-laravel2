@@ -9,4 +9,9 @@ class Planogram extends Model
 {
     use HasFactory;
     protected $table = 'planogram';
+
+    public function product()
+    {
+        return $this->hasOne('App\Models\Product', 'item_id', 'item_id');
+    }
 }
