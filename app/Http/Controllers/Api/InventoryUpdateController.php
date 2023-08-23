@@ -11,18 +11,24 @@ class InventoryUpdateController extends Controller
 {
     public function processRequest(Request $request)
     {
-
-        // "request_id": ‘string’, //unique auto-gen
-        // "kiosk_external_id": ‘string’, //Magex unique kiosk ID
-        // request
-        $req = $request->json()->all();
         $stock = array();
-        foreach ($req['items'] as $item)
-        {   
-            isset($stock[$item['upc']]) ||  $stock[$item['upc']] = 0;
-            $stock[$item['upc']] += $item['current_stock'];
+
+        $req = $request->json()->all();
+
+        if ($message_type === 'loading')
+        {
+            foreach ($req['post_items'] as $item)
+            {   
+                isset($stock[$item['upc']]) ||  $stock[$item['upc']] = 0;
+                $stock[$item['upc']] += $item['current_stock'];
+            }
+        } else {
+            foreach ($req['items'] as $item)
+            {   
+                isset($stock[$item['upc']]) ||  $stock[$item['upc']] = 0;
+                $stock[$item['upc']] += $item['current_stock'];
+            }
         }
-        
         foreach ($stock as $upc => $available)
         {
             $product = Product::where('productCode', $upc)->first();

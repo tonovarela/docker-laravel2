@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->integer('id')->primary();
+            $table->integer('transaction_id')->nullable();
             $table->integer('item_amount');
             $table->decimal('tax_amount',  10, 2);
             $table->decimal('total_amount',  10, 2);
             $table->string('order_status');
+            $table->string('payment_status')->nullable();
+            $table->string('dispense_status')->nullable();
             $table->timestamps();
             //$table->foreign('order_status_id')->references('id')->on('order_statuses');
         });

@@ -5,17 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Order;
+
 class DispenseUpdateController extends Controller
 {
     public function processRequest(Request $request)
     {
-
-        // "request_id": ‘string’, //unique auto-gen
-        // "kiosk_external_id": ‘string’, //Magex unique kiosk ID
-        // request
         $req = $request->json()->all();
+        $order = Order::with('details')->find($req['order_id']);
 
-
+        $order->payment_status = $req['status'];
+        $order->transaction_id = $req['transaction_id'];
+        $order->save();
         // $response = '{"status":"Active","order_info":{}}';
         $response = [
             'status' => 'SUCCESS',

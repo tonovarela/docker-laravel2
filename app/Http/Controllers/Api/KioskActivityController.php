@@ -33,6 +33,7 @@ class KioskActivityController extends Controller
                 'total_amount' => $active_order->total_amount,
                 'items' => array(),
             ];
+
             foreach ($active_order->details as $item)
             {
                 $order_info['items'][] = [
@@ -51,6 +52,7 @@ class KioskActivityController extends Controller
 
                 ];
             }
+            $active_order->order_status = 'OrderSent';
         } else {
             $status = 'Active';
             $order_info = $no_order;
