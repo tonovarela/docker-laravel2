@@ -15,7 +15,7 @@ class InventoryUpdateController extends Controller
 
         $req = $request->json()->all();
 
-        if ($message_type === 'loading')
+        if ($req['message_type'] === 'loading')
         {
             foreach ($req['post_items'] as $item)
             {   
