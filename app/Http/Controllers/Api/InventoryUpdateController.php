@@ -32,8 +32,13 @@ class InventoryUpdateController extends Controller
         foreach ($stock as $upc => $available)
         {
             $product = Product::where('productCode', $upc)->first();
-            $product->available = $available;
-            $product->save();
+            if (isset($product))
+            {
+                $product->available = $available;
+                $product->save();
+            } else {
+                info('product missing: ', $upc, $available);
+            }
         }
 
         // $response = '{"status":"Active","order_info":{}}';
