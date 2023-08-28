@@ -37,7 +37,7 @@ class InventoryUpdateController extends Controller
                 $product->available = $available;
                 $product->save();
             } else {
-                info('product missing: ', $upc, $available);
+                info('product missing: ', [$upc, $available]);
             }
         }
 
