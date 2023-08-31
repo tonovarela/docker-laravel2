@@ -52,7 +52,8 @@ class KioskActivityController extends Controller
 
                 ];
             }
-            $active_order->order_status = 'OrderSent';
+            $active_order->order_status = 'OrderStarted';
+            $active_order->save();
         } else {
             $status = 'Active';
             $order_info = $no_order;
