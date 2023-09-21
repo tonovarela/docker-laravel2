@@ -43,6 +43,7 @@ class get_product extends Command
         foreach ($planos as $plano)
         {
             $item_id = $plano->item_id;
+
             $req = array(
                 "request" => [
                     'uniqueRequestId' => $uniqueRequestId,
@@ -62,6 +63,25 @@ class get_product extends Command
             $json = $response->json();
             $product = $json['response']['product'];
 
+            //check exists - then update
+            $exists = Product::where('item_id', $item_id)->first();
+            if (isset($exists))
+            {
+                $exists->item_id = $product['id'];
+                $exists->productCode = $product['item_code'];
+                $exists->upc =  $product['upc'];
+                $exists->name =  $product['item'];
+                $exists->image1 =  $product['detail']['img1'] ?? '';
+                $exists->image2 =  $product['detail']['img2'] ?? ''; 
+                $exists->image3 =  $product['detail']['img3'] ?? '';
+                $exists->image4 =  $product['detail']['img4'] ?? '';
+                $exists->summary =  $product['detail']['detail'] ?? '';
+                $exists->description =  $product['detail']['description'] ?? '';
+                $exists->productPrice =  $plano['productPrice'] ?? 0;
+                $exists->save();
+
+            } else {
+
             $prod = new Product;
             $prod->item_id = $product['id'];
             $prod->productCode = $product['item_code'];
@@ -75,7 +95,7 @@ class get_product extends Command
             $prod->description =  $product['detail']['description'] ?? '';
             $prod->productPrice =  $plano['productPrice'] ?? 0;
             $prod->save();
-
+            }
         }
     }
     public function get_config()
