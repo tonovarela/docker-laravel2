@@ -13,7 +13,10 @@
         @stack('styles')
         <!-- Scripts -->
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src='/public/resources/js/app.js'></script>
+
+        <link href="/public/resources/css/app.css" rel="stylesheet" />
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
