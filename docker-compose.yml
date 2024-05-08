@@ -1,13 +1,14 @@
-version: '3'
-
 services:
-  web:
+  app:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: laravel
+      dockerfile: Dockerfile      
+    container_name: laravel8
     ports:
-      - "80:80"
-    volumes:
-      - .:/var/www/html
+      - "80:80"    
+      - "5173:5173"  
+    # volumes:
+    #   - .:/var/www/html      
+    command: bash -c /var/www/html/start.sh
+    env_file: .env    
 
