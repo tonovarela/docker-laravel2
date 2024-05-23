@@ -44,6 +44,9 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
  RUN npm install
 
+ USER root
+ RUN ["chmod", "+x", "start.sh"] 
+ 
 
 
 #CMD ["apache2-foreground" ]

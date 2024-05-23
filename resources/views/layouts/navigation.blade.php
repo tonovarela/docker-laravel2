@@ -15,7 +15,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex justify-between items-center w-full">
                     <div class="space-x-8 items-center">
                         <x-nav-link :href="route('main.list')" :active="request()->routeIs('main.list')">
-                            {{ __('All Products') }}
+                            {{ __('All Varela') }}
                         </x-nav-link>
                     </div>
                     <a href="{{ route('cart.list') }}" class="flex items-center space-x-1">
